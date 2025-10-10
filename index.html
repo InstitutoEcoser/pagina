@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instituto ECOSER - Associação Socio Ambiental de Educação e Cultura</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #e0e0e0;
+            background: #1a2f2a;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            background: #0f4a3e;
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo img {
+            height: 50px;
+            width: 50px;
+            object-fit: contain;
+        }
+
+        .logo-text {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #7cb342;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            color: #7cb342;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 60px;
+            background: #0f4a3e;
+            color: white;
+            padding: 6rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="40" fill="rgba(124,179,66,0.1)"/></svg>') repeat;
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 2rem;
+        }
+
+        .hero-logo {
+            width: 180px;
+            height: 180px;
+            object-fit: contain;
+            flex-shrink: 0;
+            animation: fadeInUp 1s;
+        }
+
+        .hero-text {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            flex: 1;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            animation: fadeInUp 1s;
+            text-align: center;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 0;
+            animation: fadeInUp 1s 0.2s backwards;
+            text-align: center;
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: #ffffff;
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: #7cb342;
+            border-radius: 2px;
+        }
+
+        /* Mudar o Mundo Section */
+        #mudar-mundo {
+            background: #1a2f2a;
+        }
+
+        .mundo-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .mundo-card {
+            background: #243d36;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-left: 4px solid #7cb342;
+        }
+
+        .mundo-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(124,179,66,0.3);
+        }
+
+        .mundo-card h3 {
+            color: #ffffff;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .mundo-card p {
+            color: #b8c9c3;
+            line-height: 1.8;
+        }
+
+        /* Quem Somos */
+        #quem-somos {
+            background: #203833;
+        }
+
+        .quem-somos-content {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 2.5rem;
+            background: #243d36;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+            border-left: 5px solid #7cb342;
+        }
+
+        .quem-somos-content p {
+            font-size: 1.1rem;
+            line-height: 1.9;
+            color: #b8c9c3;
+            text-align: justify;
+        }
+
+        /* Projetos */
+        #projetos {
+            background: #1a2f2a;
+        }
+
+        .projetos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .projeto-card {
+            background: #243d36;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .projeto-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 40px rgba(124,179,66,0.3);
+        }
+
+        .projeto-header {
+            background: #0f4a3e;
+            color: white;
+            padding: 2rem;
+            min-height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .projeto-header h3 {
+            font-size: 1.4rem;
+            text-align: center;
+            line-height: 1.4;
+        }
+
+        .projeto-body {
+            padding: 2rem;
+        }
+
+        .projeto-body p {
+            color: #b8c9c3;
+            line-height: 1.8;
+        }
+
+        /* Contato */
+        #contato {
+            background: #0f4a3e;
+            color: white;
+        }
+
+        #contato .section-title {
+            color: white;
+        }
+
+        #contato .section-title::after {
+            background: #7cb342;
+        }
+
+        .contato-content {
+            max-width: 800px;
+            margin: 3rem auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .contato-item {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255,255,255,0.1);
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            transition: background 0.3s;
+        }
+
+        .contato-item:hover {
+            background: rgba(255,255,255,0.15);
+        }
+
+        .contato-item h3 {
+            color: #7cb342;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .contato-item p {
+            font-size: 1.1rem;
+            margin: 0.5rem 0;
+        }
+
+        .contato-item a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contato-item a:hover {
+            color: #7cb342;
+        }
+
+        /* Footer */
+        footer {
+            background: #0a3329;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        footer p {
+            opacity: 0.8;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .logo img {
+                height: 40px;
+                width: 40px;
+            }
+
+            .logo-text {
+                font-size: 1rem;
+            }
+
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero-text {
+                text-align: center;
+            }
+
+            .hero h1 {
+                text-align: center;
+            }
+
+            .hero p {
+                text-align: center;
+            }
+
+            .hero-logo {
+                width: 100px;
+                height: 100px;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            section {
+                padding: 3rem 1rem;
+            }
+        }
+
+        /* Scroll Animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s, transform 0.6s;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="logo_redondo_semfundo.png" alt="Instituto ECOSER Logo">
+                <span class="logo-text">INSTITUTO ECOSER</span>
+            </div>
+            <ul>
+                <li><a href="#mudar-mundo">Nos Ajude</a></li>
+                <li><a href="#quem-somos">Quem Somos</a></li>
+                <li><a href="#projetos">Projetos</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <img src="logo_redondo_semfundo.png" alt="Instituto ECOSER Logo" class="hero-logo">
+            <div class="hero-text">
+                <h1>Instituto ECOSER</h1>
+                <p>Associação Socio Ambiental de Educação e Cultura</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="mudar-mundo">
+        <h2 class="section-title">Nos Ajude a Mudar o Mundo</h2>
+        <div class="mundo-content">
+            <div class="mundo-card fade-in">
+                <h3>🌍 Questões Ambientais</h3>
+                <p>Vivemos um momento crítico para o planeta. As mudanças climáticas, a poluição e o descarte inadequado de resíduos afetam diretamente nossa qualidade de vida e o futuro das próximas gerações.</p>
+            </div>
+            <div class="mundo-card fade-in">
+                <h3>♻️ Transformação Local</h3>
+                <p>Acreditamos que a mudança começa em nossa comunidade. Cada ação consciente, cada resíduo reciclado e cada pessoa educada contribui para construir um mundo mais sustentável e equilibrado.</p>
+            </div>
+            <div class="mundo-card fade-in">
+                <h3>🤝 Justiça Social</h3>
+                <p>Um mundo melhor é também um mundo mais justo. Trabalhamos para que todos tenham acesso à educação ambiental e possam participar ativamente na construção de uma sociedade mais equitativa e sustentável.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="quem-somos">
+        <h2 class="section-title">Quem Somos</h2>
+        <div class="quem-somos-content fade-in">
+            <p>O Instituto Ecoser é uma organização dedicada à promoção da sustentabilidade ambiental e à justiça social, com foco na educação, mobilização comunitária e gestão responsável de resíduos. Atuamos em diversas frentes, como a realização de gravimetria de resíduos sólidos urbanos, em parceria com a Secretaria Municipal de Meio Ambiente, e a implementação de projetos como o "Recicla São Chico", que visa a conscientização e a prática da reciclagem na comunidade.</p>
+            <br>
+            <p>Nosso trabalho é orientado por princípios éticos e pela busca por soluções inovadoras que integrem conhecimento técnico e participação comunitária. Acreditamos que a transformação social e ambiental começa com a educação, o engajamento coletivo e a ação local, sempre respeitando os direitos humanos e promovendo a equidade.</p>
+        </div>
+    </section>
+
+    <section id="projetos">
+        <h2 class="section-title">Nossos Projetos</h2>
+        <div class="projetos-grid">
+            <div class="projeto-card fade-in">
+                <div class="projeto-header">
+                    <h3>Projeto de Lei: Destinação Correta de Resíduos em Festivais</h3>
+                </div>
+                <div class="projeto-body">
+                    <p>Desenvolvemos uma proposta de legislação para garantir a gestão adequada de resíduos durante festivais e eventos, promovendo a reciclagem e reduzindo o impacto ambiental dessas atividades.</p>
+                </div>
+            </div>
+            <div class="projeto-card fade-in">
+                <div class="projeto-header">
+                    <h3>Forração de Casas com Caixas Tetrapack</h3>
+                </div>
+                <div class="projeto-body">
+                    <p>Projeto inovador que reutiliza embalagens tetrapack para forração de residências, oferecendo isolamento térmico sustentável e acessível, transformando resíduos em soluções práticas.</p>
+                </div>
+            </div>
+            <div class="projeto-card fade-in">
+                <div class="projeto-header">
+                    <h3>Oficinas de Gestão de Resíduos nas Escolas</h3>
+                </div>
+                <div class="projeto-body">
+                    <p>Realizamos oficinas educativas em escolas de São Chico, ensinando crianças e jovens sobre separação, reciclagem e gestão responsável de resíduos, formando cidadãos conscientes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contato">
+        <h2 class="section-title">Entre em Contato</h2>
+        <div class="contato-content">
+            <div class="contato-item fade-in">
+                <h3>📧 Email</h3>
+                <p><a href="mailto:institutoecoser@gmail.com">institutoecoser@gmail.com</a></p>
+            </div>
+            <div class="contato-item fade-in">
+                <h3>📱 Telefones</h3>
+                <p><strong>Presidente:</strong><br><a href="tel:+5551999999999">51 99999-9999</a></p>
+                <p><strong>Secretário:</strong><br><a href="tel:+5551980241734">51 98024-1734</a></p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Instituto ECOSER - Todos os direitos reservados</p>
+        <p>Associação Socio Ambiental de Educação e Cultura</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
