@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Instituto ECOSER - Associação Socio Ambiental de Educação e Cultura</title>
+    <title>Instituto ECOSER - Associação Socioambiental de Educação e Cultura</title>
     <style>
         * {
             margin: 0;
@@ -131,11 +131,19 @@
             text-align: center;
         }
 
-        .hero p {
+        .hero .hero-subtitle {
             font-size: 1.3rem;
-            margin-bottom: 0;
+            margin-bottom: 0.4rem;
             animation: fadeInUp 1s 0.2s backwards;
             text-align: center;
+        }
+
+        .hero .hero-cnpj {
+            font-size: 0.95rem;
+            color: #a8d08d;
+            animation: fadeInUp 1s 0.3s backwards;
+            text-align: center;
+            opacity: 0.85;
         }
 
         /* Sections */
@@ -164,6 +172,62 @@
             height: 4px;
             background: #7cb342;
             border-radius: 2px;
+        }
+
+        /* Missão e Visão */
+        #missao-visao {
+            background: #1e3830;
+        }
+
+        #missao-visao > section {
+            padding: 0;
+            max-width: 100%;
+            margin: 0;
+        }
+
+        .missao-visao-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+        }
+
+        .missao-visao-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .mv-card {
+            background: #243d36;
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+            border-top: 4px solid #7cb342;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .mv-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(124,179,66,0.25);
+        }
+
+        .mv-card .mv-icon {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .mv-card h3 {
+            color: #7cb342;
+            font-size: 1.6rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .mv-card p {
+            color: #b8c9c3;
+            line-height: 1.9;
+            font-size: 1.05rem;
         }
 
         /* Mudar o Mundo Section */
@@ -290,11 +354,11 @@
         }
 
         .contato-content {
-            max-width: 800px;
+            max-width: 1000px;
             margin: 3rem auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
         }
 
         .contato-item {
@@ -312,13 +376,14 @@
 
         .contato-item h3 {
             color: #7cb342;
-            margin-bottom: 1.5rem;
-            font-size: 1.5rem;
+            margin-bottom: 1.2rem;
+            font-size: 1.3rem;
         }
 
         .contato-item p {
-            font-size: 1.1rem;
+            font-size: 1rem;
             margin: 0.5rem 0;
+            line-height: 1.6;
         }
 
         .contato-item a {
@@ -328,6 +393,31 @@
         }
 
         .contato-item a:hover {
+            color: #7cb342;
+        }
+
+        /* Info institucional no rodapé do contato */
+        .info-institucional {
+            max-width: 1000px;
+            margin: 0 auto 2rem;
+            padding: 1.5rem 2rem;
+            background: rgba(255,255,255,0.07);
+            border-radius: 12px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem 3rem;
+            justify-content: center;
+            font-size: 0.92rem;
+            color: #c8ddd5;
+        }
+
+        .info-institucional span {
+            display: flex;
+            gap: 0.4rem;
+            align-items: center;
+        }
+
+        .info-institucional strong {
             color: #7cb342;
         }
 
@@ -341,6 +431,13 @@
 
         footer p {
             opacity: 0.8;
+            margin-bottom: 0.3rem;
+            font-size: 0.95rem;
+        }
+
+        footer .footer-cnpj {
+            opacity: 0.55;
+            font-size: 0.82rem;
         }
 
         /* Animations */
@@ -377,10 +474,11 @@
 
             .hero h1 {
                 text-align: center;
+                font-size: 2rem;
             }
 
-            .hero p {
-                text-align: center;
+            .hero .hero-subtitle {
+                font-size: 1.1rem;
             }
 
             .hero-logo {
@@ -393,20 +491,16 @@
                 gap: 1rem;
             }
 
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .hero p {
-                font-size: 1.1rem;
-            }
-
             .section-title {
                 font-size: 2rem;
             }
 
             section {
                 padding: 3rem 1rem;
+            }
+
+            .missao-visao-grid {
+                grid-template-columns: 1fr;
             }
         }
 
@@ -444,10 +538,30 @@
             <img src="logo_redondo_semfundo.png" alt="Instituto ECOSER Logo" class="hero-logo">
             <div class="hero-text">
                 <h1>Instituto ECOSER</h1>
-                <p>Associação Socio Ambiental de Educação e Cultura</p>
+                <p class="hero-subtitle">Associação Socioambiental de Educação e Cultura</p>
+                <p class="hero-cnpj">CNPJ: 062.341.074/0001-49</p>
             </div>
         </div>
     </section>
+
+    <!-- Missão e Visão -->
+    <div id="missao-visao">
+        <div class="missao-visao-wrapper">
+            <h2 class="section-title">Missão & Visão</h2>
+            <div class="missao-visao-grid">
+                <div class="mv-card fade-in">
+                    <span class="mv-icon">🏹</span>
+                    <h3>Missão</h3>
+                    <p>Promover a transformação socioambiental por meio da educação, da cultura, da participação cidadã e da articulação de projetos sustentáveis que regenerem o meio ambiente, valorizem a diversidade e fortaleçam o bem comum, integrando pessoas, organizações e o poder público em ações efetivas de impacto positivo.</p>
+                </div>
+                <div class="mv-card fade-in">
+                    <span class="mv-icon">🌱</span>
+                    <h3>Visão</h3>
+                    <p>Ser uma referência em ações socioambientais sustentáveis e colaborativas, que inspire e fortaleça indivíduos, comunidades e poder público na construção de uma sociedade justa, resiliente e ambientalmente responsável.</p>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <section id="mudar-mundo">
         <h2 class="section-title">Nos Ajude a Mudar o Mundo</h2>
@@ -470,7 +584,7 @@
     <section id="quem-somos">
         <h2 class="section-title">Quem Somos</h2>
         <div class="quem-somos-content fade-in">
-            <p>O Instituto Ecoser é uma organização dedicada à promoção da sustentabilidade ambiental e à justiça social, com foco na educação, mobilização comunitária e gestão responsável de resíduos. Atuamos em diversas frentes, como a realização de gravimetria de resíduos sólidos urbanos, em parceria com a Secretaria Municipal de Meio Ambiente, e a implementação de projetos como o "Recicla São Chico", que visa a conscientização e a prática da reciclagem na comunidade.</p>
+            <p>O Instituto Ecoser — formalmente registrado como <strong style="color:#a8d08d">Associação Socioambiental de Educação e Cultura ECOSER</strong> (CNPJ 062.341.074/0001-49) — é uma organização dedicada à promoção da sustentabilidade ambiental e à justiça social, com foco na educação, mobilização comunitária e gestão responsável de resíduos. Atuamos em diversas frentes, como a realização de gravimetria de resíduos sólidos urbanos, em parceria com a Secretaria Municipal de Meio Ambiente, e a implementação de projetos como o "Recicla São Chico", que visa a conscientização e a prática da reciclagem na comunidade.</p>
             <br>
             <p>Nosso trabalho é orientado por princípios éticos e pela busca por soluções inovadoras que integrem conhecimento técnico e participação comunitária. Acreditamos que a transformação social e ambiental começa com a educação, o engajamento coletivo e a ação local, sempre respeitando os direitos humanos e promovendo a equidade.</p>
         </div>
@@ -508,9 +622,21 @@
 
     <section id="contato">
         <h2 class="section-title">Entre em Contato</h2>
+
+        <!-- Informações institucionais -->
+        <div class="info-institucional fade-in">
+            <span><strong>Razão Social:</strong> Associação Socioambiental de Educação e Cultura ECOSER</span>
+            <span><strong>CNPJ:</strong> 062.341.074/0001-49</span>
+            <span><strong>Endereço:</strong>Rua São Bernardo, 357, São Francisco de Paula – RS</span>
+        </div>
+
         <div class="contato-content">
             <div class="contato-item fade-in">
-                <h3>📧 Email</h3>
+                <h3>📧 E-mail Institucional</h3>
+                <p><a href="mailto:institutoecoser@institutoecoser.org.br">institutoecoser@<br>institutoecoser.org.br</a></p>
+            </div>
+            <div class="contato-item fade-in">
+                <h3>📧 E-mail Alternativo</h3>
                 <p><a href="mailto:institutoecoser@gmail.com">institutoecoser@gmail.com</a></p>
             </div>
             <div class="contato-item fade-in">
@@ -522,8 +648,9 @@
     </section>
 
     <footer>
-        <p>&copy; 2025 Instituto ECOSER - Todos os direitos reservados</p>
-        <p>Associação Socio Ambiental de Educação e Cultura</p>
+        <p>&copy; 2025 Instituto ECOSER — Todos os direitos reservados</p>
+        <p>Associação Socioambiental de Educação e Cultura</p>
+        <p class="footer-cnpj">CNPJ: 062.341.074/0001-49</p>
     </footer>
 
     <script>
